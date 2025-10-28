@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eijkim Maulit - Project Details</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo">Developer Portfolio</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html" class="active">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="project-details-main">
+        <section class="project-details-section">
+            <div class="container">
+                <h2 class="project-title">Ordering System</h2>
+                <p class="project-description">A fastfood ordering system built with C++ that allows customers to select items, manage orders, and process payments.</p>
+
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="code">Code</button>
+                    <button class="tab-button" data-tab="pseudo-code">Pseudo Code</button>
+                    <button class="tab-button" data-tab="diagram">Diagram</button>
+                </div>
+
+                <div id="code" class="tab-content active">
+                    
+                    <h3>C++ Source Code</h3>
+                    <div class="code-block-wrapper">
+                        <button class="run-code-btn" onclick="window.location.href='https://www.programiz.com/online-compiler/50mABCVYPUKyy'">Run Code</button>
+                        <pre class="code-block">
+<code class="language-cpp">
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <vector>
+using namespace std;
+
+struct Item {
+    string name;
+    double price;
+    int quantity;
+};
+
+vector<Item> orders;
+double total = 0;
+
+void menu() {
+    cout << "\n\t\t\t+===================================+\n";
+    cout << "\t\t\t       FASTFOOD MENU\n";
+    cout << "\t\t\t 1. Beef Steak     Php 75.00\n";
+    cout << "\t\t\t 2. Burger         Php 60.00\n";
+    cout << "\t\t\t 3. Fried Chicken  Php 50.00\n";
+    cout << "\t\t\t 4. Fries          Php 30.00\n";
+    cout << "\t\t\t 5. Coke           Php 25.00\n";
+    cout << "\t\t\t 6. CANCEL\n";
+    cout << "\t\t\t+===================================+\n";
+}
+
+void order() {
+    int choice;
+    char again;
+
+    cout << "\nEnter the number of the item you want to buy: ";
+    cin >> choice;
+
+    if (choice < 1 || choice > 6) {
+        cout << "Invalid choice. Please choose between 1 to 6 only.\n";
+        order();
+        return;
+    }
+
+    if (choice == 6) {
+        cout << "Order cancelled. Thank you!\n";
+        exit(0);
+    }
+
+    int quantity;
+    Item item;
+    switch (choice) {
+        case 1: item = {"Beef Steak", 75.00, 0}; break;
+        case 2: item = {"Burger", 60.00, 0}; break;
+        case 3: item = {"Fried Chicken", 50.00, 0}; break;
+        case 4: item = {"Fries", 30.00, 0}; break;
+        case 5: item = {"Coke", 25.00, 0}; break;
+    }
+
+    cout << "How many " << item.name << "(s) do you want to buy? ";
+    cin >> quantity;
+
+    item.quantity = quantity;
+    total += item.price * item.quantity;
+    orders.push_back(item);
+
+    cout << "Do you want to buy again? (Y/N): ";
+    cin >> again;
+
+    if (toupper(again) == 'Y') {
+        order();
+    } else {
+        // Display summary
+        cout << "\n\n========== ORDER SUMMARY ==========\n";
+        cout << left << setw(20) << "Item" 
+             << setw(10) << "Qty" 
+             << setw(10) << "Price" 
+             << setw(10) << "Subtotal" << endl;
+        cout << "-----------------------------------\n";
+
+        for (auto &o : orders) {
+            cout << left << setw(20) << o.name 
+                 << setw(10) << o.quantity 
+                 << setw(10) << fixed << setprecision(2) << o.price 
+                 << setw(10) << o.price * o.quantity << endl;
+        }
+
+        cout << "-----------------------------------\n";
+        cout << "TOTAL: Php " << fixed << setprecision(2) << total << endl;
+
+        double pay;
+        cout << "Enter payment amount: Php ";
+        cin >> pay;
+
+        if (pay < total) {
+            cout << "Not enough payment! Please pay at least Php " << total << endl;
+        } else {
+            double change = pay - total;
+            cout << "Change: Php " << fixed << setprecision(2) << change << endl;
+        }
+
+        cout << "\nThank you for ordering!\n";
+    }
+}
+
+int main() {
+    cout << "Welcome to the Fastfood Ordering System!" << endl;
+    menu();
+    order();
+
+    cout << "\nDo you want to continue? (1 = Yes, 2 = No): ";
+    int cont;
+    cin >> cont;
+
+    if (cont == 1) {
+        orders.clear();
+        total = 0;
+        menu();
+        order();
+    } else {
+        cout << "\nThank you for using the system!" << endl;
+        cout << "Have a great day!\n";
+    }
+
+    return 0;
+}
+
+</code></pre>
+                    </div>
+                </div>
+
+                <div id="pseudo-code" class="tab-content">
+                    <h3>Pseudocode</h3>
+                    <pre class="code-block">
+<code class="language-pseudocode">
+START
+  DECLARE Item struct with name, price, quantity
+  DECLARE orders as a list of Item
+  DECLARE total = 0
+
+  FUNCTION menu():
+    DISPLAY "FASTFOOD MENU"
+    DISPLAY menu items with prices
+    DISPLAY "Cancel" option
+
+  FUNCTION order():
+    GET user choice
+    IF choice is invalid THEN
+      DISPLAY "Invalid choice"
+      RETURN
+    END IF
+
+    CREATE currentItem based on choice
+    GET quantity for currentItem
+    IF quantity <= 0 THEN
+      DISPLAY "Quantity must be greater than zero"
+      RETURN
+    END IF
+
+    ADD currentItem to orders list
+    ADD (currentItem.price * currentItem.quantity) to total
+    DISPLAY confirmation
+
+  FUNCTION viewOrders():
+    IF orders is empty THEN
+      DISPLAY "No orders placed"
+      RETURN
+    END IF
+
+    DISPLAY "YOUR ORDERS" header
+    DISPLAY table headers: Item, Qty, Price, Subtotal
+    FOR EACH item in orders:
+      CALCULATE subtotal = item.price * item.quantity
+      DISPLAY item details and subtotal
+    END FOR
+    DISPLAY total amount
+
+  MAIN PROGRAM:
+    DO:
+      CALL menu()
+      CALL order()
+      GET user input for 'order again'
+    WHILE user wants to order again
+
+    CALL viewOrders()
+
+    IF total > 0 THEN
+      GET payment amount
+      IF payment >= total THEN
+        CALCULATE change = payment - total
+        DISPLAY "Payment successful! Your change is " + change
+        DISPLAY "Thank you for your order!"
+      ELSE
+        DISPLAY "Insufficient payment. Order cancelled."
+      END IF
+    END IF
+END
+</code></pre>
+                </div>
+
+                <div id="diagram" class="tab-content">
+                    <h3>Flowchart / Diagram Placeholder</h3>
+                    <div class="diagram-placeholder">
+                        <p>This is where your project diagram or flowchart would go.</p>
+                        <img src="https://via.placeholder.com/800x400/1F1F2B/B06FFF?text=Flowchart+or+Diagram" alt="Project Diagram Placeholder" class="responsive-img">
+                        <p>You can replace the placeholder image with your actual diagram.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Eijkim Maulit. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
