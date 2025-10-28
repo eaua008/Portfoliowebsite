@@ -246,9 +246,9 @@ END
                 <div id="diagram" class="tab-content">
                     <h3>Flowchart / Diagram Placeholder</h3>
                     <div class="diagram-placeholder">
-                        <p>This is where your project diagram or flowchart would go.</p>
+                        
                         <img src="https://via.placeholder.com/800x400/1F1F2B/B06FFF?text=Flowchart+or+Diagram" alt="Project Diagram Placeholder" class="responsive-img">
-                        <p>You can replace the placeholder image with your actual diagram.</p>
+                       
                     </div>
                 </div>
             </div>
@@ -263,4 +263,5 @@ END
 
     <script src="script.js"></script>
 </body>
+
 </html>
