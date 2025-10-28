@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ordering System | Eijkim Maulit</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">Developer Portfolio</div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="projects.html" class="nav-link active">Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="project-detail-page">
+    <section class="project-detail">
+      <h1>Ordering System</h1>
+      <p class="muted">A fastfood ordering system built with C++ that allows customers to select items, manage orders, and process payments.</p>
+
+      <div class="tabs">
+        <button class="tab active" data-target="code">Code</button>
+        <button class="tab" data-target="pseudo">Pseudo Code</button>
+        <button class="tab" data-target="diagram">Diagram</button>
+      </div>
+
+      <div class="tab-panels">
+        <div id="code" class="tab-panel active">
+          <h3>C++ Source Code</h3>
+          <pre class="code-block">
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <vector>
+using namespace std;
+
+struct Item {
+    string name;
+    double price;
+    int quantity;
+};
+
+vector<Item> orders;
+double total = 0;
+
+void menu() {
+    cout << "\n\t\t\t+===================================+\n";
+    cout << "\t\t\t       FASTFOOD MENU\n";
+    cout << "\t\t\t 1. Beef Steak     Php 75.00\n";
+    cout << "\t\t\t 2. Burger         Php 60.00\n";
+    cout << "\t\t\t 3. Fried Chicken  Php 50.00\n";
+    cout << "\t\t\t 4. Fries          Php 30.00\n";
+    cout << "\t\t\t 5. Coke           Php 25.00\n";
+    cout << "\t\t\t 6. CANCEL\n";
+    cout << "\t\t\t+===================================+\n";
+}
+
+void order() {
+    int choice;
+    char again;
+
+    cout << "\nEnter the number of the item you want to buy: ";
+    cin >> choice;
+
+    if (choice < 1 || choice > 6) {
+        cout << "Invalid choice. Please choose between 1 to 6 only.\n";
+        order();
+        return;
+    }
+
+    if (choice == 6) {
+        cout << "Order cancelled. Thank you!\n";
+        exit(0);
+    }
+
+    int quantity;
+    Item item;
+    switch (choice) {
+        case 1: item = {"Beef Steak", 75.00, 0}; break;
+        case 2: item = {"Burger", 60.00, 0}; break;
+        case 3: item = {"Fried Chicken", 50.00, 0}; break;
+        case 4: item = {"Fries", 30.00, 0}; break;
+        case 5: item = {"Coke", 25.00, 0}; break;
+    }
+
+    cout << "How many " << item.name << "(s) do you want to buy? ";
+    cin >> quantity;
+
+    item.quantity = quantity;
+    total += item.price * item.quantity;
+    orders.push_back(item);
+
+    cout << "Do you want to buy again? (Y/N): ";
+    cin >> again;
+
+    if (toupper(again) == 'Y') {
+        order();
+    } else {
+        // Display summary
+        cout << "\n\n========== ORDER SUMMARY ==========\n";
+        cout << left << setw(20) << "Item" 
+             << setw(10) << "Qty" 
+             << setw(10) << "Price" 
+             << setw(10) << "Subtotal" << endl;
+        cout << "-----------------------------------\n";
+
+        for (auto &o : orders) {
+            cout << left << setw(20) << o.name 
+                 << setw(10) << o.quantity 
+                 << setw(10) << fixed << setprecision(2) << o.price 
+                 << setw(10) << o.price * o.quantity << endl;
+        }
+
+        cout << "-----------------------------------\n";
+        cout << "TOTAL: Php " << fixed << setprecision(2) << total << endl;
+
+        double pay;
+        cout << "Enter payment amount: Php ";
+        cin >> pay;
+
+        if (pay < total) {
+            cout << "Not enough payment! Please pay at least Php " << total << endl;
+        } else {
+            double change = pay - total;
+            cout << "Change: Php " << fixed << setprecision(2) << change << endl;
+        }
+
+        cout << "\nThank you for ordering!\n";
+    }
+}
+
+int main() {
+    cout << "Welcome to the Fastfood Ordering System!" << endl;
+    menu();
+    order();
+
+    cout << "\nDo you want to continue? (1 = Yes, 2 = No): ";
+    int cont;
+    cin >> cont;
+
+    if (cont == 1) {
+        orders.clear();
+        total = 0;
+        menu();
+        order();
+    } else {
+        cout << "\nThank you for using the system!" << endl;
+        cout << "Have a great day!\n";
+    }
+
+    return 0;
+}
+
+          </pre>
+          <div class="run-btn-wrap">
+          <button class="btn primary" onclick="window.location.href='https://www.programiz.com/online-compiler/50mABCVYPUKyy'">
+  Run Code
+</button>
+
+          </div>
+        </div>
+
+        <div id="pseudo" class="tab-panel">
+          <h3>Pseudo Code</h3>
+          <pre class="code-block">
+FUNCTION main:
+    LOOP until user chooses to exit:
+        DISPLAY "Fastfood Ordering System Menu"
+        DISPLAY "1. View Menu"
+        DISPLAY "2. Add Item to Order"
+        DISPLAY "3. View Current Order"
+        DISPLAY "4. Checkout"
+        DISPLAY "5. Exit"
+        GET user_option
+
+        SWITCH user_option:
+            CASE 1: CALL viewMenu()
+            CASE 2: CALL addItem()
+            CASE 3: CALL viewOrder()
+            CASE 4: CALL checkout()
+            CASE 5: EXIT LOOP
+            DEFAULT: DISPLAY "Invalid option."
+    END LOOP
+END FUNCTION
+
+FUNCTION viewMenu:
+    DISPLAY "FASTFOOD MENU"
+    DISPLAY list of items with prices
+END FUNCTION
+
+FUNCTION addItem:
+    GET item_number
+    GET quantity
+    LOOKUP item_details based on item_number
+    IF item_found:
+        ADD item with quantity to current_order list
+        UPDATE total_price
+        DISPLAY confirmation
+    ELSE:
+        DISPLAY "Invalid item."
+END FUNCTION
+
+FUNCTION viewOrder:
+    IF current_order is empty:
+        DISPLAY "Order is empty."
+    ELSE:
+        DISPLAY "--- Your Order ---"
+        FOR EACH item IN current_order:
+            DISPLAY item_name, quantity, and subtotal
+        DISPLAY "Total: " + total_price
+END FUNCTION
+
+FUNCTION checkout:
+    IF current_order is empty:
+        DISPLAY "Order is empty, cannot checkout."
+    ELSE:
+        DISPLAY "Processing payment for Total: " + total_price
+        SIMULATE payment success
+        DISPLAY "Payment successful! Thank you."
+        CLEAR current_order
+        RESET total_price to 0
+END FUNCTION
+          </pre>
+        </div>
+
+        <div id="diagram" class="tab-panel">
+          <h3>System Diagram</h3>
+          <p class="muted">Insert your system flow / diagram image here or paste a diagram screenshot.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>© 2025 Eijkim Maulit. All rights reserved.</div>
+  </footer>
+
+<script>
+  // Tabs behavior (simple and dependency-free)
+  document.querySelectorAll('.tabs .tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs .tab').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      const target = btn.getAttribute('data-target');
+      const el = document.getElementById(target);
+      if(el) el.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
