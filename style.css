@@ -1108,6 +1108,7 @@ body {
 .primary-btn-1 {
     background-color: var(--primary-color);
     color: white;
+     align-item: center;
 }
 
 .primary-btn-1:hover {
@@ -1313,3 +1314,4 @@ body {
     }
 
 }
+
