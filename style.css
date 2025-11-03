@@ -995,6 +995,7 @@ body {
 .heading-1 {
     font-size: 2.5em;
     margin-bottom: 20px;
+     align-item: center;
 }
 
 .heading-2, .heading-3, .heading-5, .heading-7, .heading-11 {
@@ -1310,4 +1311,5 @@ body {
         margin: 20px auto;
         padding: 20px;
     }
+
 }
