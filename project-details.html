@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eijkim Maulit - Project Details</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="projectdetails.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      
+      <link rel="stylesheet" href="orderingsystemstyle.css" />
 </head>
 <body>
     <header class="navbar">
@@ -15,7 +18,7 @@
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-					<li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="projects.html" class="active">Projects</a></li>
                 </ul>
             </nav>
@@ -28,19 +31,210 @@
                 <h2 class="project-title">Ordering System</h2>
                 <p class="project-description">A fastfood ordering system built with C++ that allows customers to select items, manage orders, and process payments.</p>
 
+                <!-- Tabs -->
                 <div class="tabs">
-                    <button class="tab-button active" data-tab="code">Code</button>
+                    <button class="tab-button active" data-tab="overview">Overview</button>
+                    <button class="tab-button" data-tab="code">Code</button>
                     <button class="tab-button" data-tab="pseudo-code">Pseudo Code</button>
                     <button class="tab-button" data-tab="diagram">Diagram</button>
                 </div>
 
-                <div id="code" class="tab-content active">
-                    
+                <!-- OVERVIEW TAB -->
+                <div id="overview" class="tab-content active">
+                    <h3>Project Overview</h3>
+                    <p class="project-description">
+                        The Fastfood Ordering System is designed to simulate a restaurant’s order management process. 
+                        It allows users to view a menu, select food items, specify quantities, calculate totals, and process payments.
+                        This project highlights practical applications of structured programming, loops, and data handling in C++.
+                    </p>
+
+                    <div class="container12">
+    <h1>🍔 Fastfood Ordering System</h1>
+
+    <div class="main-content">
+      <div class="left-panel">
+        <div class="menu">
+          <h2>Menu</h2>
+          <div class="menu-items">
+            <button class="item" data-name="Beef Steak" data-price="75">Beef Steak - ₱75.00</button>
+            <button class="item" data-name="Burger" data-price="60">Burger - ₱60.00</button>
+            <button class="item" data-name="Fried Chicken" data-price="50">Fried Chicken - ₱50.00</button>
+            <button class="item" data-name="Fries" data-price="30">Fries - ₱30.00</button>
+            <button class="item" data-name="Coke" data-price="25">Coke - ₱25.00</button>
+          </div>
+        </div>
+
+        <div class="order-summary">
+          <h2 class="order-sum">🧾 Order Summary</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody id="order-list"></tbody>
+          </table>
+          <div class="total">
+            <p>Total: ₱<span id="total">0.00</span></p>
+          </div>
+        </div>
+
+        <div class="payment">
+          <h2>💵 Payment</h2>
+          <input type="number" id="payment" placeholder="Enter payment amount" />
+          <button id="pay-btn">Pay Now</button>
+          <p id="change"></p>
+          <button id="reset1">Cancel Order</button>
+        </div>
+      </div>
+
+      <!-- Receipt Panel -->
+      <div class="right-panel" id="receipt-section">
+        <h2>🧾 Receipt</h2>
+        <div id="receipt-content">
+          <p>No order yet.</p>
+        </div>
+        <button id="resetagain">Finish Order</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overview-demo">
+        
+        <div class="video-wrapper">
+          <h4 class="demo-title">🎥 Demonstration</h4>
+            <video controls class="demo-video">
+                <source src="orderdemo.mp4" type="video/mp4">
+                
+            </video>
+            <p class="video-caption">This video demonstrates how the Fastfood Ordering System works — from choosing menu items to payment processing.</p>
+        </div>
+    </div>
+
+    <!-- CONCLUSION SECTION -->
+    <div class="overview-conclusion">
+        <h4 class="conclusion-title">🧠 Conclusion</h4>
+        <p class="conclusion-text">
+            The Fastfood Ordering System project successfully demonstrates the practical application of C++ programming in
+            simulating a real-world restaurant ordering process. By implementing structured programming, user input validation, 
+            and data management, the system efficiently handles menu selection, order tracking, and payment processing. This 
+            project highlights the importance of logical program flow and modular design, offering a clear understanding of 
+            how programming concepts translate into functional applications.
+        </p>
+    </div>
+
+    <div class="overview-conclusion">
+      <h4 class="conclusion-title">Project Impact</h4>
+      <ul class="ulprojtitle">
+      <li>
+        <p class="conclusion-text"><strong> Educational Value:</strong> Strengthens understanding of core programming concepts, including functions, loops, arrays, and structs.</p>
+      </li>
+      <li>
+        <p class="conclusion-text"><strong> Practical Skills:</strong>  Provides hands-on experience in creating functional software with real-world utility.</p>
+      </li>
+      <li>
+        <p class="conclusion-text"><strong> Efficiency & Accuracy:</strong> Automates order calculation and payment processing, reducing human errors in a simulated environment. </p>
+      </li>
+      <li>
+         <p class="conclusion-text"><strong> Portfolio Enhancement:</strong>  Demonstrates capability to develop interactive and structured applications, showcasing technical proficiency for future academic or professional opportunities.</p>
+      </li>
+      </Ul>
+    </div>
+    <div class="overview-conclusion">
+      <h4 class="conclusion-title">Project Goals</h4>
+      <ol class="oldiv">
+        
+        <li>
+          <p class="conclusion-text"> <strong>Simulate a Real-World Ordering System:</strong>Develop a system that allows users to select menu items, specify quantities, and complete orders just like in a fastfood restaurant.</p>
+        </li>
+         <li>
+          <p class="conclusion-text"> <strong>Enhance Programming Skills:</strong>Apply C++ concepts such as structured programming, loops, functions, arrays, and structs in a practical project.</p>
+        </li> 
+        <li>
+          <p class="conclusion-text"> <strong>Automate Calculations:</strong>Automatically compute subtotals, total amounts, and change to reduce errors and demonstrate program logic.</p>
+        </li> 
+        <li>
+          <p class="conclusion-text"> <strong>Improve User Experience:</strong>Create an intuitive and interactive interface (console-based or web-integrated) that allows users to navigate and place orders efficiently.</p>
+        </li>
+        
+      </ol>
+      </div>
+<div class="overview-conclusion">
+<h4 class="conclusion-title">Problems the Project Addresses</h4>
+<ol>
+  <li>
+    <p class="conclusion-text"><strong>Manual Order Tracking:</strong>Many small restaurants or fastfood counters rely on manual order calculations, which can lead to mistakes. This system automates order computation.</p>
+  </li>
+  <li>
+    <p class="conclusion-text"><strong>Human Error in Payments:</strong>Miscalculations in totals and change can frustrate customers. The system ensures accurate payment processing.</p>
+  </li>
+  <li>
+    <p class="conclusion-text"><strong>Time Efficiency:</strong>Reduces the time needed to process orders by consolidating menu selection, quantity input, total computation, and payment into one flow.</p>
+  </li>
+</ol>
+</div>
+<div class="overview-conclusion">
+  <h4 class="conclusion-title">Significance of the Project</h4>
+  <ol>
+    <li>
+      <p class="conclusion-text"><strong>Educational Significance:</strong>Helps students and novice programmers apply C++ concepts such as functions, arrays, loops, and structs in a real-world scenario, reinforcing practical programming skills.</p>
+    </li>
+    <li>
+      <p class="conclusion-text"><strong>Operational Significance:</strong>Demonstrates how an automated ordering system can improve efficiency in a fastfood setup by reducing manual errors and speeding up order processing.</p>
+    </li>
+    <li>
+      <p class="conclusion-text"><strong>Portfolio Value:</strong>Serves as a strong portfolio project, showcasing the ability to develop functional software with structured logic and user interaction.</p>
+    </li>
+    <li>
+      <p class="conclusion-text"><strong>Problem-Solving Significance:</strong>Provides a simple solution to common issues in small restaurant operations, such as miscalculations, slow service, and manual record-keeping.</p>
+    </li>
+  </ol>
+</div>
+<div class="overview-conclusion">
+  <h4 class="conclusion-title">Key Features</h4>
+  <ol>
+    <li>
+      <p class="conclusion-text"><strong>Interactive Menu Selection:</strong>Users can select from a predefined menu of items with prices displayed clearly.</p>
+    </li>
+     <li>
+      <p class="conclusion-text"><strong>Quantity and Subtotal Calculation:</strong>Automatically computes the subtotal for each item based on quantity.</p>
+    </li>
+     <li>
+      <p class="conclusion-text"><strong>Total and Change Calculation:</strong>Calculates total price of the order and determines correct change after payment.</p>
+    </li>
+     <li>
+      <p class="conclusion-text"><strong>Order Summary and Receipt:</strong>Displays a detailed order summary including item names, quantities, price, and subtotal, along with a receipt for reference.</p>
+    </li>
+    <li>
+      <p class="conclusion-text"><strong>Error Handling:</strong>Validates user input to prevent invalid selections and negative quantities.</p>
+    </li>
+    <li>
+      <p class="conclusion-text"><strong>Modular and Structured Code:</strong>Uses C++ functions and data structures for organized, maintainable code.</p>
+    </li>
+
+  </ol>
+</div>
+<div class="overview-conclusion">
+  <h4 class="conclusion-title"> My Learning and Skills Applied</h4>
+  <p class="conclusion-text">Working on the Fastfood Ordering System was a valuable learning experience. Through this project, I gained hands-on practice in C++ programming,
+     particularly in using functions, loops, arrays, and structs to build a functional and interactive application. I learned how to structure a program logically so that it 
+     can handle multiple tasks, like menu selection, order calculation, and payment processing, all without errors.
+<p class="conclusion-text">I also strengthened my skills in problem-solving and debugging, as I had to anticipate user input errors and ensure the system responded correctly. 
+  Beyond coding, I practiced attention to detail and time management, because building a fully working system requires careful planning and testing.</p>
+<p class="conclusion-text">Overall, this project allowed me to apply my theoretical knowledge in a practical way, and it gave me confidence in creating real-world applications that are both efficient and user-friendly.</p>
+</div>
+
+    </div>
+
+                <!-- CODE TAB -->
+                <div id="code" class="tab-content">
                     <h3>C++ Source Code</h3>
                     <div class="code-block-wrapper">
                         <button class="run-code-btn" onclick="window.location.href='https://www.programiz.com/online-compiler/50mABCVYPUKyy'">Run Code</button>
-                        <pre class="code-block">
-<code class="language-cpp">
+                        <pre class="code-block"><code class="language-cpp">
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -164,14 +358,14 @@ int main() {
     return 0;
 }
 
-</code></pre>
+                        </code></pre>
                     </div>
                 </div>
 
+                <!-- PSEUDOCODE TAB -->
                 <div id="pseudo-code" class="tab-content">
                     <h3>Pseudocode</h3>
-                    <pre class="code-block">
-<code class="language-pseudocode">
+                    <pre class="code-block"><code class="language-pseudocode">
 START
   DECLARE Item struct with name, price, quantity
   DECLARE orders as a list of Item
@@ -234,17 +428,18 @@ START
       END IF
     END IF
 END
-</code></pre>
+                    </code></pre>
                 </div>
 
+                <!-- DIAGRAM TAB -->
                 <div id="diagram" class="tab-content">
-                    <h3>Flowchart / Diagram Placeholder</h3>
+                    <h3>Flowchart / Diagram</h3>
                     <div class="diagram-placeholder">
-                       
                         <img src="SA.png" alt="Project Diagram Placeholder" class="responsive-img">
-                        
                     </div>
                 </div>
+
+                
             </div>
         </section>
     </main>
@@ -255,6 +450,7 @@ END
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    
+    <script src="orderingsystemjss.js"></script>
 </body>
 </html>
