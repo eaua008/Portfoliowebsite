@@ -11,14 +11,73 @@
     --border-color: #3a3a5a;
     --link-hover: #a052ee; /* Darker purple */
 }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animate all sections */
+.section-1,
+.section-2,
+.section-3,
+.section-4,
+.section-5,
+.section-6 {
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, var(--card-bg), #3a2a5a);
-    color: var(--text-light);
+    position: relative;
     margin: 0;
-    padding: 0;
-    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+
+/* The background video itself */
+.background-video {
+    position: fixed; /* stays fixed during scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2; /* behind everything */
+    filter: brightness(65%); /* darkens video for readability */
+}
+
+/* Gradient overlay on top of video */
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* between video and content */
+    background: linear-gradient(
+        135deg,
+        rgba(18, 0, 46, 0.8) 0%,
+        rgba(110, 112, 255, 0.2) 100%
+    );
+}
+
+/* Make sure all sections stack above overlay */
+header, section, footer, main {
+    position: relative;
+    z-index: 1;
+}
+
+/* Optional: Make text pop better */
+section, header, footer {
+    backdrop-filter: blur(5px);
 }
 
 .container-1, .container-2, .container-3, .container-4, .container-5, .container-6, .container-7 {
