@@ -134,22 +134,26 @@ a:hover {
 /* Hero Section */
 /* Hero Section */
 .hero-section {
+    position: relative;
     padding: 100px 0;
     text-align: center;
-    position: relative;
     overflow: hidden;
-    /* --- NEW BACKGROUND STYLES --- */
-    background-image: url('bgaboutme.png'); /* Replace with your actual image path */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* Gradient overlay for fading */
-    background-blend-mode: overlay; /* Blends the image with the gradient */
-    background-color: rgba(18, 0, 46, 0.7); /* Dark violet base for the overlay */
-    /* Adjusting existing border */
     border-bottom: 3px solid rgba(115, 0, 255, 0.991);
 }
 
+/* Background Video */
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    filter: brightness(70%); /* Darkens video for readability */
+}
+
+/* Gradient Overlay (kept same) */
 .hero-section::before {
     content: '';
     position: absolute;
@@ -157,13 +161,18 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(18,0,46,0.8) 0%, rgba(110,112,255,0.2) 100%); /* Stronger gradient overlay */
-    z-index: 0; /* Ensure it's above the image but below content */
+    background: linear-gradient(
+        135deg,
+        rgba(18, 0, 46, 0.8) 0%,
+        rgba(110, 112, 255, 0.2) 100%
+    );
+    z-index: 1;
 }
 
+/* Container and text stay above */
 .hero-section .container {
-    position: relative; /* Bring container content above the ::before pseudo-element */
-    z-index: 1;
+    position: relative;
+    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
