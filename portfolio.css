@@ -118,62 +118,12 @@ section, header, footer {
     margin-bottom: 10px;
 }
 
-.nav-link-1, .nav-link-2, .nav-link-3, .btn-1, .view-project-link-1, .view-all-link-1 {
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-.nav-link-1:hover, .nav-link-2:hover, .nav-link-3:hover, .btn-1:hover, .view-project-link-1:hover, .view-all-link-1:hover {
-    color: var(--link-hover);
-}
-
-.nav-list-1, .skill-list-1, .skill-list-2, .skill-list-3, .achievement-list-1 {
-    list-style: none;
-    padding: 0;
-}
-
-.nav-item-1, .nav-item-2, .nav-item-3, .skill-item-1, .skill-item-2, .skill-item-3, .skill-item-4, .skill-item-5, .skill-item-6, .skill-item-7, .skill-item-8, .skill-item-9, .skill-item-10, .skill-item-11, .skill-item-12, .achievement-item-1, .achievement-item-2 {
-    margin-bottom: 8px;
-}
-
-/* Navbar */
-.navbar-1 {
-    background-color: var(--card-bg);
-    padding: 15px 0;
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.navbar-1 .container-1 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .logo-1 {
     font-size: 1.5em;
     font-weight: 700;
     color: var(--text-light);
 }
 
-.nav-1 .nav-list-1 {
-    display: flex;
-    margin: 0;
-}
-
-.nav-1 .nav-list-1 .nav-item-1, .nav-item-2, .nav-item-3 {
-    margin-left: 30px;
-}
-
-.nav-1 .nav-list-1 .nav-link-1, .nav-link-2, .nav-link-3 {
-    color: var(--text-medium);
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
-
-.nav-1 .nav-list-1 .nav-link-1:hover, .nav-link-2:hover, .nav-link-3:hover {
-    color: var(--primary-color);
-}
 
 /* Section Styling */
 .section-1, .section-2, .section-3, .section-4, .section-5, .section-6 {
@@ -487,20 +437,7 @@ section, header, footer {
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    .navbar .container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .nav .nav-list {
-        margin-top: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .nav .nav-list .nav-item, .nav-item, .nav-item {
-        margin: 0 15px 10px;
-    }
+   
 
     .resume-portfolio-1 {
         flex-direction: column;
