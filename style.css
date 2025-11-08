@@ -1,19 +1,18 @@
-/* General Body and Base Styles */
 :root {
-     --bg-dark: #12002E; /* Deep violet - main background */
-    --bg-dark-light: #1A003E; /* Slightly lighter violet - header, project sections */
-    --neon-purple: #B06FFF; /* Bright neon purple */
-    --neon-blue: #6E70FF; /* Bright neon blue */
-    --text-light: #E0E0E0; /* Light text */
-    --text-medium: #A0A0A0; /* Medium grey text */
+    --bg-dark: #12002E;
+    --bg-dark-light: #1A003E;
+    --neon-purple: #B06FFF;
+    --neon-blue: #6E70FF;
+    --text-light: #E0E0E0;
+    --text-medium: #A0A0A0;
     --border-glow: #B06FFF;
-
-    /* New Metallic Grey Tones */
-    --section-bg-grey-light: #312f2f; /* Lighter metallic grey for About/Skills/Qualities */
-    --section-bg-grey-dark: #312f2f; /* Darker metallic grey for Get In Touch */
-    --card-bg: #000000; /* Darker grey for cards within grey sections */
-    --card-hover-bg: #282856; /* Lighter grey for card hover */
+    --section-bg-grey-light: #312f2f;
+    --section-bg-grey-dark: #312f2f;
+    --card-bg: #000000;
+    --card-hover-bg: #282856;
+    --transition-speed: 0.4s;
 }
+
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -22,10 +21,14 @@ body {
     background-color: var(--bg-dark);
     color: var(--text-light);
     line-height: 1.6;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
     position: relative;
 }
 
+@keyframes fadeInPage {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
 /* Space Background Effect */
 body::before {
     content: '';
@@ -34,18 +37,17 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('https://www.transparenttextures.com/patterns/stars.png'), /* Stars texture */
+    background: url('https://www.transparenttextures.com/patterns/stars.png'),
                 radial-gradient(circle at top left, rgba(255, 255, 255, 0.15), transparent 40%),
                 radial-gradient(circle at bottom right, rgba(110, 112, 255, 0.15), transparent 40%);
     background-size: cover;
-    opacity: 0.3; /* Adjust opacity for subtlety */
+    opacity: 0.3;
     z-index: -1;
-    animation: galaxyZoom 60s infinite alternate; /* Subtle zoom animation */
+    animation: galaxyZoom 60s infinite alternate;
 }
-
 @keyframes galaxyZoom {
-    0% { background-size: 100% 100%, cover, cover; }
-    100% { background-size: 120% 120%, cover, cover; }
+    0% { background-size: 100% 100%; }
+    100% { background-size: 120% 120%; }
 }
 
 
@@ -67,7 +69,7 @@ a:hover {
 
 /* Navbar */
 .navbar {
-    background-color: rgba(rgb(3, 7, 24)); /* Semi-transparent dark violet */
+    background-color: rgba(3, 7, 24, 0.85);
     padding: 1rem 0;
     position: sticky;
     top: 0;
@@ -75,6 +77,11 @@ a:hover {
     box-shadow: 0 2px 10px rgba(0,0,0,0.5);
     backdrop-filter: blur(5px);
     border-bottom: 1px solid var(--neon-purple);
+    animation: slideDown 1.2s ease-out; /* ✨ Navbar entrance */
+}
+@keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 .navbar .container {
@@ -132,7 +139,6 @@ a:hover {
 
 
 /* Hero Section */
-/* Hero Section */
 .hero-section {
     position: relative;
     padding: 100px 0;
@@ -141,7 +147,6 @@ a:hover {
     border-bottom: 3px solid rgba(115, 0, 255, 0.991);
 }
 
-/* Background Video */
 .background-video {
     position: absolute;
     top: 0;
@@ -150,17 +155,15 @@ a:hover {
     height: 100%;
     object-fit: cover;
     z-index: 0;
-    filter: brightness(70%); /* Darkens video for readability */
+    filter: brightness(70%);
 }
 
 /* Gradient Overlay (kept same) */
 .hero-section::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     background: linear-gradient(
         135deg,
         rgba(18, 0, 46, 0.8) 0%,
@@ -178,8 +181,8 @@ a:hover {
     align-items: center;
     gap: 40px;
     flex-wrap: wrap;
+    animation: fadeInUp 1.5s ease-out; /* ✨ Section fade-in */
 }
-
 
 .hero-content {
     flex: 1;
@@ -187,26 +190,44 @@ a:hover {
     text-align: left;
 }
 
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .hero-content h2 {
     font-size: 3.5rem;
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
     color: var(--neon-purple);
     text-shadow: 0 0 15px var(--neon-purple);
-    animation: fadeInScale 1s ease-out forwards;
+    animation: glowPulse 3s infinite alternate ease-in-out; /* ✨ Text glow */
+}
+
+@keyframes glowPulse {
+    from { text-shadow: 0 0 10px var(--neon-purple); }
+    to { text-shadow: 0 0 25px var(--neon-purple); }
 }
 
 .hero-content p {
     font-size: 1.4rem;
     color: var(--text-medium);
     margin-bottom: 30px;
-    animation: fadeInScale 1.2s ease-out forwards;
+    animation: fadeIn 2s ease-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .hero-buttons {
     display: flex;
     gap: 20px;
 }
-
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 .btn {
     display: inline-block;
     padding: 15px 30px;
@@ -214,11 +235,15 @@ a:hover {
     font-size: 1.1rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
     transition: all var(--transition-speed);
     position: relative;
     overflow: hidden;
     z-index: 1;
+    animation: fadeInScale 2s ease-out; /* ✨ Button pop */
+}
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 .btn::before {
@@ -301,11 +326,14 @@ a:hover {
 
 /* About and Skills Section */
 .about-skills-section {
-    background-color:rgba(15, 23, 42); /* Changed to lighter metallic grey */
+    background-color: rgba(15, 23, 42);
     padding: 80px 0;
-   
+    animation: fadeInSection 1.5s ease-out;
 }
-
+@keyframes fadeInSection {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 .about-skills-section .container {
     display: flex;
     gap: 60px;
@@ -331,16 +359,20 @@ a:hover {
 }
 
 .skill-item {
-    background-color: var(--card-bg); /* Changed for consistency with new card bg */
+    background-color: var(--card-bg);
     border: 1px solid var(--neon-blue);
     padding: 15px 25px;
     margin-bottom: 15px;
     border-radius: 8px;
-    font-size: 1.1rem;
-    color: var(--text-light);
-    box-shadow: 0 0 10px rgba(110, 112, 255, 0.2);
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    animation: popIn 0.8s ease-out both;
 }
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
 
 .skill-item:hover {
     transform: translateY(-5px);
@@ -353,8 +385,9 @@ a:hover {
 .qualities-section {
     padding: 80px 0;
     text-align: center;
-    background-color: rgba(15, 23, 42); /* Changed to lighter metallic grey */
+    background-color: rgba(15, 23, 42);
     border-bottom: 1px solid rgba(110, 112, 255, 0.2);
+    animation: fadeInSection 1.5s ease-out;
 }
 
 .qualities-section .container {
@@ -365,17 +398,17 @@ a:hover {
 }
 
 .quality-card {
-    background-color: var(--card-bg); /* Changed for consistency */
+    background-color: var(--card-bg);
     border: 1px solid var(--neon-purple);
     border-radius: 10px;
     padding: 30px;
     flex: 1;
     min-width: 280px;
     max-width: 350px;
-    box-shadow: 0 0 15px rgba(176, 111, 255, 0.3);
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed);
+    transition: all var(--transition-speed);
     position: relative;
     overflow: hidden;
+    animation: popUp 1s ease-out both;
 }
 
 .quality-card::before {
@@ -393,8 +426,8 @@ a:hover {
 
 .quality-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 0 30px var(--neon-purple);
-    background-color: rgba(15, 23, 42); /* Changed for consistency */
+    box-shadow: 0 0 30px var(--card-bg);
+    background-color:var(--card-bg); /* Changed for consistency */
 }
 .quality-card:hover::before {
     opacity: 1;
@@ -412,7 +445,7 @@ a:hover {
 
 .quality-card:hover i {
     color: var(--neon-purple);
-    text-shadow: 0 0 20px var(--neon-purple);
+    text-shadow: 0 0 10px var(--card-bg);
 }
 
 .quality-card h4 {
@@ -430,11 +463,17 @@ a:hover {
     z-index: 1;
 }
 
+@keyframes popUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* Get In Touch Section */
 .get-in-touch-section {
-    background-color:rgba(2, 6, 23); /* Changed to darker metallic grey */
+    background-color: rgba(2, 6, 23);
     padding: 80px 0;
     text-align: center;
+    animation: fadeInSection 1.5s ease-out;
 }
 
 .get-in-touch-section h3 {
@@ -452,19 +491,15 @@ a:hover {
 }
 
 .social-card {
-    background-color: var(--card-bg); /* Changed for consistency */
+    background-color: var(--card-bg);
     border: 1px solid var(--neon-blue);
     border-radius: 10px;
     padding: 25px 30px;
     width: 200px;
     text-align: center;
     box-shadow: 0 0 15px rgba(110, 112, 255, 0.3);
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    animation: popUp 1.2s ease-out both;
 }
 
 .social-card::before {
@@ -530,8 +565,8 @@ footer {
     padding: 30px 0;
     font-size: 0.9rem;
     border-top: 1px solid rgb(115, 0, 255);
+    animation: fadeIn 2s ease-out;
 }
-
 /* Responsive Design */
 @media (max-width: 992px) {
     .hero-section .container {
