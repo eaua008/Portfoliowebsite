@@ -400,9 +400,18 @@ section, header, footer {
   background-position: center;
 }
 
+
 /* Individual logos */
+.codechumlogo{
+    background-image: url("codechumlogo.webp");
+}
+
 .hkust-logo {
   background-image: url("thuosatlogo.png");
+}
+
+.uoedbrg-logo {
+    background-image: url(university-of-edinburgh-logo.webp);
 }
 
 .microsoft-logo {
