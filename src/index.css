@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100;200;300;400;500&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-celestial-cyan: #d1f7ff;
+  --color-accent-pale: #a5f3fc;
+  --color-accent-red: #ef4444;
+  --color-anime-charcoal: #0c0d12;
+  --color-anime-black: #050507;
+  --color-anime-light: #f8f9fa;
+  --color-anime-muted: #64748b;
+}
+
+/* Base resets & Customizations */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-anime-black);
+}
+
+body {
+  color: #f1f5f9; /* off-white */
+  background-color: var(--color-anime-black);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom slim scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-anime-black);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Technical scanning line effect deactivated for readability */
+.scanlines {
+  display: none;
+}
+
+/* Subtle editorial vignette */
+.vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.85) 100%);
+  z-index: 40;
+  pointer-events: none;
+}
+
+/* Giant clock rotation */
+@keyframes slowRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slowRotateReverse {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.rotate-slow {
+  animation: slowRotate 240s linear infinite;
+}
+
+.rotate-slow-reverse {
+  animation: slowRotateReverse 180s linear infinite;
+}
+
+/* Stable glowing effect on text hover */
+.glitch-hover {
+  transition: text-shadow 0.3s ease, color 0.3s ease;
+}
+.glitch-hover:hover {
+  color: var(--color-celestial-cyan);
+  text-shadow: 0 0 8px rgba(209, 247, 255, 0.5);
+}
+
+/* Clean abstract orbital structures */
+.celestial-orbital {
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+}
+
+.celestial-orbital::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  top: 50%;
+  left: -2px;
+}
+
+/* Section Header Typography */
+.section-num-huge {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: clamp(6rem, 15vw, 12rem);
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  color: rgba(255, 255, 255, 0.02);
+  user-select: none;
+}
+
+/* Grid lines overlay for anime editorial layout */
+.editorial-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 80px 80px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Elegant clean glow instead of chromatic shift */
+.chromatic-shift {
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.chromatic-shift-hover {
+  transition: text-shadow 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.chromatic-shift-hover:hover {
+  color: var(--color-celestial-cyan);
+  text-shadow: 0 0 8px rgba(209, 247, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Subtle Dust Particles */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100%) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100%) translateX(15px);
+    opacity: 0;
+  }
+}
+
+.dust-particle {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: floatUp 15s infinite linear;
+}
+
+/* Vertical Japanese Type styling */
+.japanese-vertical-editorial {
+  font-family: var(--font-sans);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 0.4em;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+/* Thin vertical tech dividers */
+.vertical-ruler {
+  position: relative;
+}
+.vertical-ruler::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 30%, rgba(255,255,255,0.08) 70%, rgba(255,255,255,0) 100%);
+}
+
+/* Shutter mask animations */
+.shutter-reveal {
+  position: relative;
+  overflow: hidden;
+}
+.shutter-reveal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-anime-light);
+  transform: translateX(-101%);
+  transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.shutter-reveal:hover::after {
+  transform: translateX(101%);
+}
